@@ -1,0 +1,12 @@
+- name: Update all Linux machines
+  hosts: all
+  become: yes
+  become_method: sudo
+  become_user: root
+  vars:
+    ansible_become_password: "password"  # Replace this with your sudo password
+  tasks:
+    - name: Update package cache
+      package:
+        name: '*'
+        state: latest
